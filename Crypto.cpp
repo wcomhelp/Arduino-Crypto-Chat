@@ -7,13 +7,13 @@ shows up on the screen of the other.
 
 uint16_t Generate_private_key() {
 	uint16_t r = 0;
-	for (i = 0; i < 16; ++i) { 
+	for (int i = 0; i < 16; ++i) { 
 		int bit = analogRead(1); // analogreads from pin 1 and stores it to bit.
 		bit = bit & 1; // Reduces the int bit to just the least significant bit.
 		r = r * 2 + bit;
 		delay(50); // Delays 50ms so the voltage on the pin can fluctuate.
 	}
-	return r
+	return r;
 }
 
 uint32_t get_input() {
