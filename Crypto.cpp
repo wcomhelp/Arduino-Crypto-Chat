@@ -1,7 +1,7 @@
-/** Chat: Two Arduinos are connected
+/* Chat: Two Arduinos are connected
 through the Serial3 port.
-Whatever one types on one of them,
-shows up on the screen of the other.
+Whanever one types on one of them,
+the message shows up on the screen of the other.
 */
 #include "Arduino.h"
 
@@ -78,7 +78,7 @@ char Setup() { // Setup function
 	Serial.println(public_key);
 	Serial.print("Can you please enter the key you received from your partner: ");
 	uint32_t partners_public_key = get_input();
-	uint32_t shared_secret = pow_mod(partners_public_key, private_key, prime); // Computes shared_secret
+	uint32_t shared_secret = fast_pow_mod(partners_public_key, private_key, prime); // Computes shared_secret
 	char secret_key = shared_secret; // lowest 8 bits of the shared_secret to secret_key
 	return secret_key;
 }
@@ -102,7 +102,6 @@ int main() {
 			Serial.write(c); // Show byte on screen as character
 		}
 	}
-
 	Serial3.end();
 	Serial.end();
 	return 0;
