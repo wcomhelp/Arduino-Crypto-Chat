@@ -91,7 +91,7 @@ int main() {
 		// PC keystroke -> other Arduino
 		if (Serial.available()>0) {
 			char c = Serial.read();
-			Serial.println((int)c);
+			//Serial.println((int)c);
 			c = c ^ secret_key; // Encrypt data
 			Serial3.write(c); // sending byte to the "other" Arduino
 		}
